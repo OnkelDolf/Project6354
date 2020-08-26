@@ -1,4 +1,4 @@
-name: Actions 😎
+name: MainAction
 
 on:
   pull_request: {}
