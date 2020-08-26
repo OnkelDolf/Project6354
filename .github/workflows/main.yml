@@ -21,21 +21,21 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: test-project/Library
-          key: Library-test-project-WebGL
+          path: Project6354/Library
+          key: Library-Project6354-WebGL
 
       # Test
       - name: Run tests
         uses: webbertakken/unity-test-runner@v1.3
         with:
-          projectPath: test-project
+          projectPath: Project6354
           unityVersion: 2019.2.11f1
 
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
         with:
-          projectPath: test-project
+          projectPath: Project6354
           unityVersion: 2019.2.11f1
           targetPlatform: WebGL
 
@@ -94,17 +94,17 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: test-project/Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: Project6354/Library
+          key: Library-Project6354-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-test-project-
+            Library-Project6354-
             Library-
 
       # Configure test runner
       - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: Project6354
           testMode: editmode
 
       # Upload artifact
@@ -125,17 +125,17 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: test-project/Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: Project6354/Library
+          key: Library-Project6354-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-test-project-
+            Library-Project6354-
             Library-
 
       # Configure test runner
       - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: Project6354
           testMode: playmode
 
       # Upload artifact
@@ -156,17 +156,17 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: test-project/Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: Project6354/Library
+          key: Library-Project6354-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-test-project-
+            Library-Project6354-
             Library-
 
       # Configure test runner
       - uses: webbertakken/unity-test-runner@v1.3
         id: testRunner
         with:
-          projectPath: test-project
+          projectPath: Project6354
           testMode: all
 
       # Upload artifacts
@@ -186,7 +186,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - test-project
+          - Project6354
         unityVersion:
           - 2019.2.11f1
         targetPlatform:
