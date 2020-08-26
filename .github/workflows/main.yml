@@ -105,8 +105,6 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
-          unityVersion:
-          - 2020.1.2f1
           testMode: editmode
 
       # Upload artifact
@@ -138,8 +136,6 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
-          unityVersion:
-          - 2020.1.2f1
           testMode: playmode
 
       # Upload artifact
@@ -171,8 +167,6 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
-          unityVersion:
-          - 2020.1.2f1
           testMode: all
 
       # Upload artifacts
