@@ -1,12 +1,14 @@
-#### Test
+# Project6354
+
+#### Project Test
 
 | Description             | Status |
 |-------------------------|--------|
-| Test edit mode | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#edit-mode) |
-| Test play mode | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#play-mode) |
-| Test all in one | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/webbertakken/unity-test-runner#all-in-one-mode) |
+| Test edit mode | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/OnkelDolf/Project6354#edit-mode) |
+| Test play mode | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/OnkelDolf/Project6354#play-mode) |
+| Test all in one | [![Actions status](https://github.com/OnkelDolf/Project6354/workflows/MainAction/badge.svg?event=push&branch=master)](https://github.com/OnkelDolf/Project6354#all-in-one-mode) |
 
-#### Build
+#### Project Build
 
 | Description             | Status |
 |-------------------------|--------|
