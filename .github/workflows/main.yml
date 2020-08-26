@@ -29,14 +29,14 @@ jobs:
         uses: webbertakken/unity-test-runner@v1.3
         with:
           projectPath: Project6354
-          unityVersion: 2019.2.11f1
+          unityVersion: 2020.1.2f1
 
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: Project6354
-          unityVersion: 2019.2.11f1
+          unityVersion: 2020.1.2f1
           targetPlatform: WebGL
 
       # Output
@@ -58,7 +58,7 @@ jobs:
       fail-fast: false
       matrix:
         unityVersion:
-          - 2019.2.11f1
+          - 2020.1.2f1
     steps:
       # Checkout repository
       - uses: actions/checkout@v2
@@ -105,6 +105,8 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
+          unityVersion:
+          - 2020.1.2f1
           testMode: editmode
 
       # Upload artifact
@@ -136,6 +138,8 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
+          unityVersion:
+          - 2020.1.2f1
           testMode: playmode
 
       # Upload artifact
@@ -167,6 +171,8 @@ jobs:
         id: testRunner
         with:
           projectPath: Project6354
+          unityVersion:
+          - 2020.1.2f1
           testMode: all
 
       # Upload artifacts
@@ -188,7 +194,7 @@ jobs:
         projectPath:
           - Project6354
         unityVersion:
-          - 2019.2.11f1
+          - 2020.1.2f1
         targetPlatform:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
