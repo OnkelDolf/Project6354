@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clickable : MonoBehaviour
 {
     [SerializeField]
-    private Material red;
+    private Material top;
     [SerializeField]
     private Material green;
 
@@ -24,13 +24,14 @@ public class Clickable : MonoBehaviour
 
     public void Clicked() 
     {
+        Debug.Log("Clicked");
         if (selected == true)
         {
             myRend.material = green;
         }
         else 
         {
-            myRend.material = red;
+            myRend.material = top;
         }
     }
 }

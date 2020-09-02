@@ -9,7 +9,7 @@ public class Click : MonoBehaviour
     
     [HideInInspector]
     public List<GameObject> selectableObjects;
-    private List<GameObject> selectedObjects;
+    public List<GameObject> selectedObjects;
 
     private Vector3 startPos;
     private Vector3 endPos;
@@ -23,19 +23,6 @@ public class Click : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) 
-        {
-            foreach (GameObject selected in selectedObjects) 
-            {
-                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Debug.Log(hit.point.ToString());
-                    selected.GetComponent<CharacterController>().goTo(hit);
-                }
-            }
-        }
         if (Input.GetMouseButtonDown(0)) 
         {
             //startPos = new Vector3();
