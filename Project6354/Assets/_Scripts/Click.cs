@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Click : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Click : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) 
         {
             //startPos = new Vector3();
             startPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -36,16 +37,16 @@ public class Click : MonoBehaviour
 
                 if (Input.GetKey("left shift"))
                 {
-                    if (clickableScript.selected == false)
+                    if (clickableScript.isSelected == false)
                     {
                         selectedObjects.Add(rayHit.collider.gameObject);
-                        clickableScript.selected = true;
+                        clickableScript.isSelected = true;
                         clickableScript.Clicked();
                     }
                     else
                     {
                         selectedObjects.Remove(rayHit.collider.gameObject);
-                        clickableScript.selected = false;
+                        clickableScript.isSelected = false;
                         clickableScript.Clicked();
                     }
                 }
@@ -54,7 +55,7 @@ public class Click : MonoBehaviour
                     ClearSelected();
 
                     selectedObjects.Add(rayHit.collider.gameObject);
-                    clickableScript.selected = true;
+                    clickableScript.isSelected = true;
                     clickableScript.Clicked();
                 }
             }
@@ -62,7 +63,7 @@ public class Click : MonoBehaviour
             {
                 foreach (GameObject obj in selectedObjects)
                 {
-                    obj.GetComponent<Clickable>().selected = false;
+                    obj.GetComponent<Clickable>().isSelected = false;
                     obj.GetComponent<Clickable>().Clicked();
                 }
 
@@ -70,7 +71,7 @@ public class Click : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) 
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) 
         {
             endPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
@@ -99,7 +100,7 @@ public class Click : MonoBehaviour
                 if (selectRect.Contains(Camera.main.WorldToViewportPoint(selectObject.transform.position), true))
                 {
                     selectedObjects.Add(selectObject);
-                    selectObject.GetComponent<Clickable>().selected = true;
+                    selectObject.GetComponent<Clickable>().isSelected = true;
                     selectObject.GetComponent<Clickable>().Clicked();
                 }
             }
@@ -125,7 +126,7 @@ public class Click : MonoBehaviour
         {
             foreach (GameObject obj in selectedObjects)
             {
-                obj.GetComponent<Clickable>().selected = false;
+                obj.GetComponent<Clickable>().isSelected = false;
                 obj.GetComponent<Clickable>().Clicked();
             }
 

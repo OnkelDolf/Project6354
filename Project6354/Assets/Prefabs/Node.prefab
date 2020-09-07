@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1139580113383894540}
   m_Layer: 8
   m_Name: Node
-  m_TagString: Untagged
+  m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cdd633d6d731f4cb09d763c5f450fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top: {fileID: 2100000, guid: 13b88bfbd2fe15844980b90657ca4a01, type: 2}
-  green: {fileID: 2100000, guid: 95d7a818d6cec8c45b94c34883a6f573, type: 2}
-  selected: 0
+  notSelected: {fileID: 2100000, guid: 13b88bfbd2fe15844980b90657ca4a01, type: 2}
+  selected: {fileID: 2100000, guid: 95d7a818d6cec8c45b94c34883a6f573, type: 2}
+  isSelected: 0
+  built: 0

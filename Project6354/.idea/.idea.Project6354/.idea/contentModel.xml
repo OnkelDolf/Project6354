@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Dolf\.Rider2019.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\Dolf\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dolf\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Project6354.-1199581535.00" t="ExcludeRecursive" />
-    <e p="F:\Projects\Project6354\Project6354" t="IncludeRecursive">
+    <e p="C:\_Stuff\Project6354\Project6354" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
           <e p="Build.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
           <e p="Click.cs" t="Include" />
           <e p="Clickable.cs" t="Include" />
           <e p="CreateLevel.cs" t="Include" />
@@ -17,7 +15,6 @@
             <e p="ButtonController.cs" t="Include" />
             <e p="CharacterController.cs" t="Include" />
           </e>
-          <e p="RTSController.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
@@ -25,5 +22,7 @@
       <e p="Project6354.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
+    <e p="C:\Users\eric.hederstedtjons\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\eric.hederstedtjons\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Project6354.564321113.00" t="ExcludeRecursive" />
   </component>
 </project>

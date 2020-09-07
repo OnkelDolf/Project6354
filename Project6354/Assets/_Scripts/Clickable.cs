@@ -5,12 +5,13 @@ using UnityEngine;
 public class Clickable : MonoBehaviour
 {
     [SerializeField]
-    private Material top;
+    private Material notSelected;
     [SerializeField]
-    private Material green;
+    private Material selected;
 
     [HideInInspector]
-    public bool selected = false;
+    public bool isSelected = false;
+    public bool built = false;
 
     private MeshRenderer myRend;
 
@@ -25,13 +26,17 @@ public class Clickable : MonoBehaviour
     public void Clicked() 
     {
         Debug.Log("Clicked");
-        if (selected == true)
+        if (isSelected == true)
         {
-            myRend.material = green;
+            var mats = myRend.materials;
+            mats[0] = selected;
+            myRend.materials = mats;
         }
         else 
         {
-            myRend.material = top;
+            var mats = myRend.materials;
+            mats[0] = notSelected;
+            myRend.materials = mats;
         }
     }
 }

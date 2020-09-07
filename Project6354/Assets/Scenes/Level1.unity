@@ -135,10 +135,10 @@ GameObject:
   - component: {fileID: 70973559}
   - component: {fileID: 70973558}
   - component: {fileID: 70973561}
-  - component: {fileID: 70973562}
   - component: {fileID: 70973564}
   - component: {fileID: 70973565}
   - component: {fileID: 70973563}
+  - component: {fileID: 70973562}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 70973557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8411ab8205f41f847baea1fe978abea5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cabae63d35e1cb4bacc82b2d2868ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
@@ -295,6 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8aa6306a047dd43abed4c3ca54a6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildParent: {fileID: 840151578}
+  wallPrefab: {fileID: 2955433592476342560, guid: e8df5fe560f56e14babe34b97a9c2ade, type: 3}
+  moneyCounter: {fileID: 1739948102}
 --- !u!1 &217989484
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +379,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 217989487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: BuildWall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &217989487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,6 +827,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469651039}
   m_CullTransparentMesh: 0
+--- !u!1 &840151578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840151579}
+  m_Layer: 0
+  m_Name: Build
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840151579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840151578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &937338061
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +1043,7 @@ RectTransform:
   - {fileID: 1739948103}
   - {fileID: 1273567015}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1148,7 +1193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273567014
 GameObject:

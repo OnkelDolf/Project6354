@@ -52,7 +52,7 @@ public class CreateLevel : MonoBehaviour
             }
             
             GameObject.FindWithTag("Level Generation UI").SetActive(false);
-            GetComponent<RTSController>().paused = false;
+            GetComponent<CameraController>().paused = false;
         }
         else
         {
