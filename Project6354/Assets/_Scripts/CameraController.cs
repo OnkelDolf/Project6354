@@ -23,14 +23,19 @@ public class CameraController : MonoBehaviour
     public bool paused = true;
 
     private GameObject buildUI;
-    private bool buidUIActive;
+    public bool buidUIActive;
+    private GameObject buildManagerUI;
     
     //Start is called before the first frame update
     void Start()
     {
         buildUI = GameObject.FindWithTag("Build Menu UI");
+        GetComponent<Click>().buildUI = buildUI;
         buildUI.SetActive(false);
-        
+        buildManagerUI = GameObject.FindWithTag("Manage Build Menu UI");
+        GetComponent<Click>().buildManagerUI = buildManagerUI;
+        buildManagerUI.SetActive(false);
+
         rb = GetComponent<Rigidbody>(); //Assigns the component Rigidbody of the object to rb.
         
         if (transform.position.y <= maxCameraHeight)
@@ -50,12 +55,21 @@ public class CameraController : MonoBehaviour
         if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == false)
         {
             //Debug.Log("Enable Build UI");
-            buildUI.SetActive(true);
+            if (CheckSelectionForNonNode())
+            {
+                buildUI.SetActive(false);
+                buildManagerUI.SetActive(true);
+            }
+            else
+            {
+                buildManagerUI.SetActive(false);
+                buildUI.SetActive(true);
+            }
             buidUIActive = true;
         }
         else if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == true)
         {
-            //Debug.Log("Disable Build UI");
+            buildManagerUI.SetActive(false);
             buildUI.SetActive(false);
             buidUIActive = false;
         }
@@ -97,5 +111,24 @@ public class CameraController : MonoBehaviour
         }
 
         transform.eulerAngles = new Vector3(pitch, yaw, transform.rotation.z);
+    }
+
+    private bool CheckSelectionForNonNode() // TODO: Add other turrets
+    {
+        int walls = 0;
+        foreach (GameObject select in GetComponent<Click>().selectedObjects)
+        {
+            if (select.CompareTag("Wall"))
+            {
+                walls++;
+            }
+        }
+
+        if (walls > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Build : MonoBehaviour
@@ -36,7 +37,7 @@ public class Build : MonoBehaviour
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= 100)
                 {
                     moneyGoBrrrrr -= 100;
-                    Vector3 pos = new Vector3(0, 5f, 0);
+                    Vector3 pos = new Vector3(0, 7.5f, 0);
                     Instantiate(wallPrefab, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
@@ -47,5 +48,20 @@ public class Build : MonoBehaviour
         }
 
         moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+    }
+
+    public void Delete()
+    {
+        List<GameObject> selectedObjects = cc.selectedObjects;
+        foreach (GameObject select in selectedObjects.ToList())
+        {
+            if (select.CompareTag("Wall")) // TODO: Add other turrets
+            {
+                selectedObjects.Remove(select);
+                Destroy(select);
+            }
+        }
+
+        cc.selectedObjects = selectedObjects;
     }
 }

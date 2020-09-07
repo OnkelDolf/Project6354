@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Click : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class Click : MonoBehaviour
 
     private Vector3 startPos;
     private Vector3 endPos;
+    
+    public GameObject buildUI;
+    public GameObject buildManagerUI;
+    public GameObject box;
 
     // Start is called before the first frame update
     void Awake()
@@ -69,16 +75,41 @@ public class Click : MonoBehaviour
 
                 selectedObjects.Clear();
             }
+            
+            if (CheckSelectionForNonNode())
+            {
+                buildUI.SetActive(false);
+                buildManagerUI.SetActive(true);
+            }
+            else
+            {
+                buildManagerUI.SetActive(false);
+                buildUI.SetActive(true);
+            }
         }
 
-        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) 
+        if (Input.GetMouseButtonUp(0) /*&& !EventSystem.current.IsPointerOverGameObject()*/) // TODO: Fix this so the UI doesn't spass out.
         {
-            endPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-            if (startPos != endPos) 
+            /*
+            if (EventSystem.current.currentSelectedGameObject == box && !EventSystem.current.IsPointerOverGameObject())
             {
-                SelectObjects();
+                endPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+                if (startPos != endPos) 
+                {
+                    SelectObjects();
+                }
             }
+            else if (EventSystem.current.currentSelectedGameObject != box && EventSystem.current.IsPointerOverGameObject())
+            {
+                endPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+                if (startPos != endPos) 
+                {
+                    SelectObjects();
+                }
+            }
+            */
         }
     }
 
@@ -119,6 +150,8 @@ public class Click : MonoBehaviour
 
             remObjects.Clear();
         }
+        
+        
     }
     private void ClearSelected() 
     {
@@ -132,5 +165,27 @@ public class Click : MonoBehaviour
 
             selectedObjects.Clear();
         }
+        buildUI.SetActive(false);
+        buildManagerUI.SetActive(false);
+        GetComponent<CameraController>().buidUIActive = false;
+    }
+    
+    private bool CheckSelectionForNonNode() // TODO: Add other turrets
+    {
+        int walls = 0;
+        foreach (GameObject select in selectedObjects)
+        {
+            if (select.CompareTag("Wall"))
+            {
+                walls++;
+            }
+        }
+
+        if (walls > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Level Generation UI
   - Build Menu UI
   - Node
+  - Manage Build Menu UI
+  - Wall
   layers:
   - Default
   - TransparentFX

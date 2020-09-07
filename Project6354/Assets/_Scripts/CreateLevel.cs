@@ -11,6 +11,7 @@ public class CreateLevel : MonoBehaviour
     public GameObject nodePrefab;
     public GameObject nodeParent;
     public GameObject outlinePrefab;
+    public GameObject background;
     private Quaternion rotation;
     
     [SerializeField] private int maxAllowedGridSize = 30;
@@ -21,6 +22,8 @@ public class CreateLevel : MonoBehaviour
 
     public void generateLevel()
     {
+        background.SetActive(false);
+        
         // Initialize and convert the text in the input field to integers.
         int _generateX = int.Parse(generateX.text);
         int _generateZ = int.Parse(generateZ.text);
