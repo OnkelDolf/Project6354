@@ -52,6 +52,7 @@ public class CreateLevel : MonoBehaviour
             }
             
             GameObject.FindWithTag("Level Generation UI").SetActive(false);
+            GetComponent<CameraController>().paused = false;
         }
         else
         {

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Level Generation UI
+  - Build Menu UI
+  - Node
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Clickable
   - 
   - 
   - 
