@@ -33,7 +33,7 @@ jobs:
 
       # Build
       - name: Build project
-        uses: webbertakken/unity-builder@v0.10
+        uses: webbertakken/unity-builder@v1.2
         with:
           projectPath: Project6354
           unityVersion: 2020.1.3f1
