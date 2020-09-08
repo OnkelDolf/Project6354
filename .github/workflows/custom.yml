@@ -17,7 +17,7 @@ jobs:
         projectPath:
           - Project6354
         unityVersion:
-          - 2020.1.3f1-linux-il2cpp
+          - 2020.1.3f1
         targetPlatform:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
@@ -40,6 +40,7 @@ jobs:
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
+          customParameters: '-nographics' #Possible fix
       - uses: actions/upload-artifact@v1
         with:
           name: Test results (all modes)
