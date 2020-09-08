@@ -6,10 +6,24 @@ using UnityEngine;
 
 public class Build : MonoBehaviour
 {
-    private int moneyGoBrrrrr = 1000;
+    [SerializeField]private int moneyGoBrrrrr = 1000;
+    
+    [SerializeField] private int wallPrice = 100;
+    [SerializeField] private int towerDPSPrice = 200;
+    [SerializeField] private int towerAoEPrice = 250;
+    [SerializeField] private int towerAuraPrice = 300;
+    
+    [SerializeField] private int towerDPSUpgradeCost = 200;
+    [SerializeField] private int towerAoEUpgradeCost = 250;
+    [SerializeField] private int towerAuraUpgradeCost = 300;
+    
     [SerializeField] private GameObject buildParent;
     [SerializeField] private GameObject wallPrefab;
+    [SerializeField] private GameObject towerDPS;
+    [SerializeField] private GameObject towerAoE;
+    [SerializeField] private GameObject towerAura;
     [SerializeField] private GameObject moneyCounter;
+    
     private Quaternion rotation;
     
     private Click cc;
@@ -34,11 +48,77 @@ public class Build : MonoBehaviour
         {
             foreach (GameObject selected in cc.selectedObjects)
             {
-                if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= 100)
+                if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= wallPrice)
                 {
-                    moneyGoBrrrrr -= 100;
+                    moneyGoBrrrrr -= wallPrice;
                     Vector3 pos = new Vector3(0, 7.5f, 0);
                     Instantiate(wallPrefab, pos + selected.transform.position, rotation, buildParent.transform);
+                }
+                else
+                {
+                    Debug.Log("Invalid selected object");
+                }
+            }
+        }
+
+        moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+    }
+    
+    public void BuildTowerDPS()
+    {
+        if (cc.selectedObjects.Count > 0)
+        {
+            foreach (GameObject selected in cc.selectedObjects)
+            {
+                if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerDPSPrice)
+                {
+                    moneyGoBrrrrr -= towerDPSPrice;
+                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Instantiate(towerDPS, pos + selected.transform.position, rotation, buildParent.transform);
+                }
+                else
+                {
+                    Debug.Log("Invalid selected object");
+                }
+            }
+        }
+
+        moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+    }
+    
+    public void BuildTowerAoE()
+    {
+        if (cc.selectedObjects.Count > 0)
+        {
+            foreach (GameObject selected in cc.selectedObjects)
+            {
+                if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerAoEPrice)
+                {
+                    moneyGoBrrrrr -= towerAoEPrice;
+                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Instantiate(towerAoE, pos + selected.transform.position, rotation, buildParent.transform);
+                }
+                else
+                {
+                    Debug.Log("Invalid selected object");
+                }
+            }
+        }
+
+        moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+    }
+    
+    public void BuildTowerAura()
+    {
+        if (cc.selectedObjects.Count > 0)
+        {
+            foreach (GameObject selected in cc.selectedObjects)
+            {
+                if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerAuraPrice)
+                {
+                    moneyGoBrrrrr -= towerAuraPrice;
+                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Instantiate(towerAura, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
                 {
@@ -55,7 +135,22 @@ public class Build : MonoBehaviour
         List<GameObject> selectedObjects = cc.selectedObjects;
         foreach (GameObject select in selectedObjects.ToList())
         {
-            if (select.CompareTag("Wall")) // TODO: Add other turrets
+            if (select.CompareTag("Wall"))
+            {
+                selectedObjects.Remove(select);
+                Destroy(select);
+            }
+            else if (select.CompareTag("Tower DPS"))
+            {
+                selectedObjects.Remove(select);
+                Destroy(select);
+            }
+            else if (select.CompareTag("Tower Aura"))
+            {
+                selectedObjects.Remove(select);
+                Destroy(select);
+            }
+            else if (select.CompareTag("Tower AoE"))
             {
                 selectedObjects.Remove(select);
                 Destroy(select);
@@ -63,5 +158,47 @@ public class Build : MonoBehaviour
         }
 
         cc.selectedObjects = selectedObjects;
+    }
+
+    public void Upgrade() // TODO: Implement.
+    {
+        throw new NotImplementedException();
+        List<GameObject> selectedObjects = cc.selectedObjects;
+        foreach (GameObject select in selectedObjects.ToList())
+        {
+            if (select.CompareTag("Tower DPS"))
+            {
+                
+            }
+            else if (select.CompareTag("Tower Aura"))
+            {
+                
+            }
+            else if (select.CompareTag("Tower AoE"))
+            {
+                
+            }
+        }
+    }
+    
+    public void Downgrade() // TODO: Implement.
+    {
+        throw new NotImplementedException();
+        List<GameObject> selectedObjects = cc.selectedObjects;
+        foreach (GameObject select in selectedObjects.ToList())
+        {
+            if (select.CompareTag("Tower DPS"))
+            {
+                
+            }
+            else if (select.CompareTag("Tower Aura"))
+            {
+                
+            }
+            else if (select.CompareTag("Tower AoE"))
+            {
+                
+            }
+        }
     }
 }

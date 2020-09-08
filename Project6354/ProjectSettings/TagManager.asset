@@ -9,6 +9,9 @@ TagManager:
   - Node
   - Manage Build Menu UI
   - Wall
+  - Tower DPS
+  - Tower Aura
+  - Tower AoE
   layers:
   - Default
   - TransparentFX

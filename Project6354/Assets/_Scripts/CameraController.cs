@@ -113,18 +113,45 @@ public class CameraController : MonoBehaviour
         transform.eulerAngles = new Vector3(pitch, yaw, transform.rotation.z);
     }
 
-    private bool CheckSelectionForNonNode() // TODO: Add other turrets
+    private bool CheckSelectionForNonNode()
     {
         int walls = 0;
+        int turretsDPS = 0;
+        int turretsAoE = 0;
+        int turretsAura = 0;
         foreach (GameObject select in GetComponent<Click>().selectedObjects)
         {
             if (select.CompareTag("Wall"))
             {
                 walls++;
             }
+            else if (select.CompareTag("Tower Aura"))
+            {
+                turretsDPS++;
+            }
+            else if (select.CompareTag("Tower AoE"))
+            {
+                turretsAoE++;
+            }
+            else if (select.CompareTag("Tower DPS"))
+            {
+                turretsAura++;
+            }
         }
 
         if (walls > 0)
+        {
+            return true;
+        }
+        if (turretsDPS > 0)
+        {
+            return true;
+        }
+        if (turretsAoE > 0)
+        {
+            return true;
+        }
+        if (turretsAura > 0)
         {
             return true;
         }

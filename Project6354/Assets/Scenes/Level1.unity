@@ -337,8 +337,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8aa6306a047dd43abed4c3ca54a6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyGoBrrrrr: 1000
+  wallPrice: 100
+  towerDPSPrice: 100
+  towerAoEPrice: 250
+  towerAuraPrice: 300
+  towerDPSUpgradeCost: 200
+  towerAoEUpgradeCost: 250
+  towerAuraUpgradeCost: 300
   buildParent: {fileID: 840151578}
   wallPrefab: {fileID: 2955433592476342560, guid: e8df5fe560f56e14babe34b97a9c2ade, type: 3}
+  towerDPS: {fileID: 2955433592476342560, guid: c14d22747bb3a994f9547aa72e7315af, type: 3}
+  towerAoE: {fileID: 2955433592476342560, guid: 518e518fba11cf742be0056325c49fe7, type: 3}
+  towerAura: {fileID: 2955433592476342560, guid: 0929447e45fc16c4cae8c6ac5d3d92d2, type: 3}
   moneyCounter: {fileID: 1739948102}
 --- !u!114 &70973566
 MonoBehaviour:
@@ -760,7 +771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 400237883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: BuildTowerDPS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &400237883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,7 +1652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 985050813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: Downgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &985050813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1784,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031784943}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1031784943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,7 +2097,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1409753266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: BuildTowerAoE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1409753266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3482,7 +3541,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2134176074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70973565}
+        m_TargetAssemblyTypeName: Build, Assembly-CSharp
+        m_MethodName: BuildTowerAura
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2134176074
 MonoBehaviour:
   m_ObjectHideFlags: 0
