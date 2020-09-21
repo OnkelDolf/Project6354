@@ -12,6 +12,7 @@ TagManager:
   - Tower DPS
   - Tower Aura
   - Tower AoE
+  - Enemy
   layers:
   - Default
   - TransparentFX

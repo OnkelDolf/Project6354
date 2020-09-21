@@ -51,7 +51,7 @@ public class Build : MonoBehaviour
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= wallPrice)
                 {
                     moneyGoBrrrrr -= wallPrice;
-                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Vector3 pos = new Vector3(0, 6.5f, 0);
                     Instantiate(wallPrefab, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
@@ -162,13 +162,18 @@ public class Build : MonoBehaviour
 
     public void Upgrade() // TODO: Implement.
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
         List<GameObject> selectedObjects = cc.selectedObjects;
         foreach (GameObject select in selectedObjects.ToList())
         {
             if (select.CompareTag("Tower DPS"))
             {
-                
+                if (moneyGoBrrrrr >= towerDPSUpgradeCost)
+                {
+                    select.GetComponent<TowerDPS>().level += 1;
+                    moneyGoBrrrrr -= towerDPSUpgradeCost;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
             }
             else if (select.CompareTag("Tower Aura"))
             {
@@ -183,13 +188,18 @@ public class Build : MonoBehaviour
     
     public void Downgrade() // TODO: Implement.
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
         List<GameObject> selectedObjects = cc.selectedObjects;
         foreach (GameObject select in selectedObjects.ToList())
         {
             if (select.CompareTag("Tower DPS"))
             {
-                
+                if (select.GetComponent<TowerDPS>().level > 1)
+                {
+                    select.GetComponent<TowerDPS>().level -= 1;
+                    moneyGoBrrrrr += towerDPSUpgradeCost / 2;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
             }
             else if (select.CompareTag("Tower Aura"))
             {

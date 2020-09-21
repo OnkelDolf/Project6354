@@ -5,16 +5,21 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
+          <e p="AoEBall.cs" t="Include" />
           <e p="BoxSelect.cs" t="Include" />
           <e p="Build.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="Click.cs" t="Include" />
           <e p="Clickable.cs" t="Include" />
           <e p="CreateLevel.cs" t="Include" />
+          <e p="Health.cs" t="Include" />
           <e p="RTS" t="Include">
             <e p="ButtonController.cs" t="Include" />
             <e p="CharacterController.cs" t="Include" />
           </e>
+          <e p="TowerAoE.cs" t="Include" />
+          <e p="TowerAura.cs" t="Include" />
+          <e p="TowerDPS.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
