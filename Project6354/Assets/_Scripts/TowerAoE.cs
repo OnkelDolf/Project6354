@@ -34,7 +34,7 @@ public class TowerAoE : MonoBehaviour
                 targets.RemoveAt(0);
                 if (targets.Count > 0)
                 {
-                    targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
+                    //targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
                 }
             }
         }
@@ -44,7 +44,8 @@ public class TowerAoE : MonoBehaviour
 
     private void Scan()
     {
-        Shoot(targets[0]); // Shoots target
+        Debug.Log("Scan called");
+		Shoot(targets[0]); // Shoots target
         t = 0;
         
         /*
@@ -74,7 +75,6 @@ public class TowerAoE : MonoBehaviour
 
     public void removeFromList(GameObject obj)
     {
-        
         targets.Remove(obj);
         targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
     }
