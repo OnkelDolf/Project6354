@@ -8,6 +8,8 @@ public class CreateLevel : MonoBehaviour
     [SerializeField] private InputField generateX;
     [SerializeField] private InputField generateZ;
 
+	private int test;
+
     public GameObject nodePrefab;
     public GameObject nodeParent;
     public GameObject outlinePrefab;

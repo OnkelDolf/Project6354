@@ -53,33 +53,35 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //TODO: Make this use switch statements instead of if.
-        if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == false)
-        {
-            //Debug.Log("Enable Build UI");
-            if (CheckSelectionForNonNode())
-            {
-                buildUI.SetActive(false);
-                buildManagerUI.SetActive(true);
-            }
-            else
-            {
-                buildManagerUI.SetActive(false);
-                buildUI.SetActive(true);
-            }
-            buidUIActive = true;
-        }
-        else if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == true)
-        {
-            buildManagerUI.SetActive(false);
-            buildUI.SetActive(false);
-            buidUIActive = false;
-        }
+        
         
         switch (paused)
         {
             case false:
                 cameraHeight += Input.GetAxis("Mouse ScrollWheel") * scrollModifier * Time.deltaTime * 120;
                 transform.position = new Vector3(transform.position.x, cameraHeight, transform.position.z);
+				
+				if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == false)
+     		   {
+       		     //Debug.Log("Enable Build UI");
+         		   if (CheckSelectionForNonNode())
+         		   {
+          		      buildUI.SetActive(false);
+          		      buildManagerUI.SetActive(true);
+         		   }
+         		   else
+         		   {
+            		    buildManagerUI.SetActive(false);
+              		  buildUI.SetActive(true);
+           		 }
+           		 buidUIActive = true;
+        		}
+        		else if (Input.GetButtonDown($"Open Buy Menu") && buidUIActive == true)
+        		{
+            		buildManagerUI.SetActive(false);
+            		buildUI.SetActive(false);
+            		buidUIActive = false;
+        		}
                 break;
         }
     }

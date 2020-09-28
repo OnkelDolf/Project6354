@@ -875,7 +875,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8225333363444214539, guid: 88f7f7a689bf75f4ea76dfded6a1c71c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.09
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 8225333363444214539, guid: 88f7f7a689bf75f4ea76dfded6a1c71c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -939,3 +939,5 @@ MonoBehaviour:
   firePoint: {fileID: 1707821668135043243}
   oldTarget: {fileID: 0}
   level: 1
+  t: 0
+  fireRate: 3

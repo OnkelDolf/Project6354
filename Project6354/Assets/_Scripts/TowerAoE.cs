@@ -10,22 +10,22 @@ public class TowerAoE : MonoBehaviour
 {
     public GameObject AoEBall;
     public GameObject firePoint;
-    [HideInInspector]public GameObject oldTarget;
+    [HideInInspector] public GameObject oldTarget;
     
     public int level = 1;
     private int damage = 10;
     
-    private float t = 0;
-    private float fireRate = 3;
+    [SerializeField] private float t = 0;
+    [SerializeField] private float fireRate = 3;
     private List<GameObject> targets = new List<GameObject>();
     private bool targetsInRange = false;
     private Quaternion rotation;
     
     private void FixedUpdate()
     {
-        if (t > fireRate && targetsInRange)
+        if (t > fireRate && targetsInRange && targets.Count > 0)
         {
-            if (targets[0] != null && targets.Count > 0)
+            if (targets[0] != null /*&& targets.Count > 0*/)
             {
                 Scan();
             }
@@ -34,7 +34,7 @@ public class TowerAoE : MonoBehaviour
                 targets.RemoveAt(0);
                 if (targets.Count > 0)
                 {
-                    //targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
+                    targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
                 }
             }
         }

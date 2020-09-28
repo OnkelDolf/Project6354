@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Build : MonoBehaviour
 {
-    [SerializeField]private int moneyGoBrrrrr = 1000;
+    [SerializeField] private int moneyGoBrrrrr = 1000;
     
     [SerializeField] private int wallPrice = 100;
     [SerializeField] private int towerDPSPrice = 200;
