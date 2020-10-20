@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class CreateLevel : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class CreateLevel : MonoBehaviour
 
     [SerializeField] private int outlineOffsetX = 1;
     [SerializeField] private int outlineOffsetZ = 1;
+
+	public  NavMeshSurface surface;
 
     public void generateLevel()
     {
@@ -92,6 +95,8 @@ public class CreateLevel : MonoBehaviour
 					}
                 }
             }
+
+			surface.BuildNavMesh();
 
             GameObject.FindWithTag("Level Generation UI").SetActive(false);
             GetComponent<CameraController>().paused = false;

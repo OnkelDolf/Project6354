@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3402545420540288646}
   - component: {fileID: 3402545420540288649}
   - component: {fileID: 3402545420540288648}
-  - component: {fileID: 3402545420540288651}
   - component: {fileID: 5130187635625846854}
   m_Layer: 0
   m_Name: AISpawnPoint
@@ -101,19 +100,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!65 &3402545420540288651
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3402545420540288650}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5130187635625846854
 MonoBehaviour:
   m_ObjectHideFlags: 0

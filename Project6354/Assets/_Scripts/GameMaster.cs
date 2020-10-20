@@ -5,13 +5,27 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
 	public bool defendPointPlaced = false;
+	public bool startWave = false;
 	
 	[SerializeField] private int level = 1;
 	[SerializeField] private int wave = 1;
+	[SerializeField] private int maxWave = 5;
+	[SerializeField] private int startingEnemies = 20;
+
+	private int currentEnemies;
+	private int maxLevel;
+	//private int enemiesLeft;
+
+	[SerializeField] private float enemySpawnPerSecond = 1f;
+	[SerializeField] private float enemySpawnTimer = 0f;
+
+	[SerializeField] private GameObject enemyPrefab;
+	[SerializeField] private GameObject startWaveButton;
 	[SerializeField] private GameObject buildParent;
 	[SerializeField] private GameObject defendPointPrefab;
 	private GameObject defendPointUI;
 	private GameObject defendPoint;
+	[SerializeField]private GameObject[] aiSpawnPoints;
 
 	private HealthBuilding defendPointHealth;
 	
@@ -24,6 +38,7 @@ public class GameMaster : MonoBehaviour
 		cc = Camera.main.GetComponent<Click>();
 		defendPointUI = GameObject.FindWithTag("Defend Point UI");
 		defendPointUI.SetActive(false);
+		startWaveButton.SetActive(false);
 	}
 
     // Update is called once per frame
@@ -35,6 +50,15 @@ public class GameMaster : MonoBehaviour
 			loose();
 		}
 		
+		if(startWave == true)
+		{
+			// TODO(Dolf): Start doing shit.
+			enemySpawnTimer += Time.deltaTime;
+			if(enemySpawnTimer >= 1 / enemySpawnPerSecond && currentEnemies != 0)
+			{
+				spawnEnemy();
+			}
+		}
 	}
 
 	public void spawnDefendPoint()
@@ -57,13 +81,23 @@ public class GameMaster : MonoBehaviour
 					
 					Debug.Log("'" + defendPoint.name + "'" + " Has been spawned!");
 
+					maxLevel = transform.childCount;
+
+					aiSpawnPoints = new GameObject[maxLevel];
+
+					for(int i = 0; i < maxLevel; i++)
+					{
+						aiSpawnPoints[i] = transform.GetChild(i).gameObject;
+					}
+
+					startWaveButton.SetActive(true);
+
 					return;
                 }
                 else
                 {
                     Debug.Log("Invalid selected object");
                 }
-				
             }
         }
 	}
@@ -73,6 +107,24 @@ public class GameMaster : MonoBehaviour
 		defendPointUI.SetActive(true);
 	}
 
+	public void startCurrentWave()
+	{
+		startWaveButton.SetActive(false);
+		currentEnemies = startingEnemies * wave * level;
+		startWave = true;
+	}
+
+	private void endCurrentWave()
+	{
+		startWaveButton.SetActive(true);
+		startWave = false;
+	}
+
+	private void spawnEnemy()
+	{
+		//Instantiate(enemyPrefab, );
+	}
+	
 	private void loose()
 	{
 		Destroy(defendPoint);
