@@ -262,9 +262,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateX: {fileID: 2041625660}
   generateZ: {fileID: 1813409577}
+  maxLevels: 3
   nodePrefab: {fileID: 3029024995402424357, guid: f24e9a5b63ec5394b8e7887846eb94b9, type: 3}
   nodeParent: {fileID: 1715582715}
   outlinePrefab: {fileID: 5292821387466931112, guid: 7a1098fd17cda9043838d109e354bc1d, type: 3}
+  aiSpawnPrefab: {fileID: 3402545420540288650, guid: 42fc52eb2364ae2478de54b99ffd5b9b, type: 3}
+  aiSpawnParent: {fileID: 449016315}
   background: {fileID: 604652478}
   maxAllowedGridSize: 30
   minAllowedGridSize: 5
@@ -1142,6 +1145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defendPointPlaced: 0
+  level: 1
+  wave: 1
   buildParent: {fileID: 840151578}
   defendPointPrefab: {fileID: 2955433592476342560, guid: 088f1c5760f86cb43a0747adb32b9e68, type: 3}
 --- !u!4 &449016317
@@ -1152,7 +1157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449016315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 177.45937, y: 211.57103, z: 101.8866}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2669,7 +2674,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &1502809344
 MonoBehaviour:
   m_ObjectHideFlags: 0

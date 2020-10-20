@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 581644480558927412}
   - component: {fileID: -4330617964551146072}
   - component: {fileID: 5679381859542474494}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Defend Point
   m_TagString: Defend Point
   m_Icon: {fileID: 0}

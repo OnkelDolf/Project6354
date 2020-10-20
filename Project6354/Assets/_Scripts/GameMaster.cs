@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
 	public bool defendPointPlaced = false;
-
+	
+	[SerializeField] private int level = 1;
+	[SerializeField] private int wave = 1;
 	[SerializeField] private GameObject buildParent;
 	[SerializeField] private GameObject defendPointPrefab;
 	private GameObject defendPointUI;
@@ -51,6 +53,8 @@ public class GameMaster : MonoBehaviour
 					defendPoint = GameObject.FindWithTag("Defend Point");
 					defendPointHealth = defendPoint.GetComponent<HealthBuilding>();
 
+					selected.GetComponent<Clickable>().built = true;
+					
 					Debug.Log("'" + defendPoint.name + "'" + " Has been spawned!");
 
 					return;
