@@ -13,6 +13,8 @@ TagManager:
   - Tower Aura
   - Tower AoE
   - Enemy
+  - Defend Point UI
+  - Defend Point
   layers:
   - Default
   - TransparentFX

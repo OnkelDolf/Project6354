@@ -13,7 +13,7 @@ public class AoEBall : MonoBehaviour
 
     private List<GameObject> targets = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         level = GetComponentInParent<TowerAoE>().level;
         
@@ -32,6 +32,11 @@ public class AoEBall : MonoBehaviour
                 int distanceBetweenObject = Convert.ToInt32(Vector2.Distance(transform.position, select.transform.position));
                 distanceBetweenObject = Convert.ToInt32(Math.Pow(Convert.ToDouble(distanceBetweenObject), 1.6));
                 
+				if(select.GetComponent<Health>().health >= (damage * level - distanceBetweenObject * Convert.ToInt32(distanceBetweenObject <= 5)))
+				{
+					GetComponentInParent<TowerAoE>().removeFromList(select);
+				}
+
                 select.GetComponent<Health>().Damage((damage * level - distanceBetweenObject * Convert.ToInt32(distanceBetweenObject <= 5)), gameObject);
             }
         }

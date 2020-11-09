@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  force: 100
+  force: 1
 --- !u!135 &1618372606744524214
 SphereCollider:
   m_ObjectHideFlags: 0

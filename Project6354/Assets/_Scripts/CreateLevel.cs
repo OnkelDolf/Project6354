@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class CreateLevel : MonoBehaviour
 {
     [SerializeField] private InputField generateX;
     [SerializeField] private InputField generateZ;
 
-    public GameObject nodePrefab;
+	[SerializeField] private int maxLevels = 3;
+	private int test;
+
+    public GameObject nodePrefab; // TODO(Dolf): Make all of these prefabs private but exposed to the editor. 
     public GameObject nodeParent;
     public GameObject outlinePrefab;
+	public GameObject aiSpawnPrefab;
+	public GameObject aiSpawnParent;
     public GameObject background;
     private Quaternion rotation;
     
@@ -20,10 +26,10 @@ public class CreateLevel : MonoBehaviour
     [SerializeField] private int outlineOffsetX = 1;
     [SerializeField] private int outlineOffsetZ = 1;
 
+	public  NavMeshSurface surface;
+
     public void generateLevel()
     {
-        background.SetActive(false);
-        
         // Initialize and convert the text in the input field to integers.
         int _generateX = int.Parse(generateX.text);
         int _generateZ = int.Parse(generateZ.text);
@@ -31,6 +37,9 @@ public class CreateLevel : MonoBehaviour
         
         if (_generateX <= maxAllowedGridSize && _generateZ <= maxAllowedGridSize && _generateX >= minAllowedGridSize && _generateZ >= minAllowedGridSize && generateX.text != null && generateZ.text != null)
         {
+			background.SetActive(false);
+			aiSpawnParent.GetComponent<GameMaster>().enableSpawnDefendPointUI();
+
             // Generate the main platform
             for (int i = 0; i < _generateX; i++)
             {
@@ -53,7 +62,42 @@ public class CreateLevel : MonoBehaviour
                     }
                 }
             }
-            
+			
+			// Generate AI spawn points
+			for (int i = 0; i <= _generateX + 1; i++)
+            {
+                for (int j = 0; j <= _generateZ + 1; j++)
+                {
+					// TODO(Dolf): Make an equation for this instead of having 4 else if statements.
+                    if (i == _generateX / 2 && j == 0)
+                    {
+						Vector3 pos = new Vector3(i * 10, 6f, j * 10);
+						GameObject temp = Instantiate(aiSpawnPrefab, pos, rotation, aiSpawnParent.transform);
+						temp.name = "AISpawnPoint Clone (" + i + ", " + j + ")";
+                    }
+					else if(i == _generateX / 2 && j == _generateZ - 1)
+					{
+						Vector3 pos = new Vector3(i * 10, 6f, j * 10);
+						GameObject temp = Instantiate(aiSpawnPrefab, pos, rotation, aiSpawnParent.transform);
+						temp.name = "AISpawnPoint Clone (" + i + ", " + j + ")";
+					}
+					else if(i == 0 && j == _generateZ / 2)
+					{
+						Vector3 pos = new Vector3(i * 10, 6f, j * 10);
+						GameObject temp = Instantiate(aiSpawnPrefab, pos, rotation, aiSpawnParent.transform);
+						temp.name = "AISpawnPoint Clone (" + i + ", " + j + ")";
+					}
+					else if(i == _generateX - 1 && j == _generateZ / 2)
+					{
+						Vector3 pos = new Vector3(i * 10, 6f, j * 10);
+						GameObject temp = Instantiate(aiSpawnPrefab, pos, rotation, aiSpawnParent.transform);
+						temp.name = "AISpawnPoint Clone (" + i + ", " + j + ")";
+					}
+                }
+            }
+
+			surface.BuildNavMesh();
+
             GameObject.FindWithTag("Level Generation UI").SetActive(false);
             GetComponent<CameraController>().paused = false;
         }

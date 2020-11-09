@@ -1,0 +1,17 @@
+version(1);
+
+project_name = "Project6354";
+
+patterns = {
+"*.cs",
+"*.cpp",
+"*.c",
+"*.h",
+"*.bat",
+"*.sh",
+"*.4coder"
+};
+
+blacklist_patterns = {
+".*"
+};
