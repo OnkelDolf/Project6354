@@ -50,6 +50,7 @@ public class Build : MonoBehaviour
             {
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= wallPrice)
                 {
+					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= wallPrice;
                     Vector3 pos = new Vector3(0, 6.5f, 0);
                     Instantiate(wallPrefab, pos + selected.transform.position, rotation, buildParent.transform);
@@ -72,6 +73,7 @@ public class Build : MonoBehaviour
             {
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerDPSPrice)
                 {
+					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerDPSPrice;
                     Vector3 pos = new Vector3(0, 7.5f, 0);
                     Instantiate(towerDPS, pos + selected.transform.position, rotation, buildParent.transform);
@@ -94,6 +96,7 @@ public class Build : MonoBehaviour
             {
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerAoEPrice)
                 {
+					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerAoEPrice;
                     Vector3 pos = new Vector3(0, 7.5f, 0);
                     Instantiate(towerAoE, pos + selected.transform.position, rotation, buildParent.transform);
@@ -116,6 +119,7 @@ public class Build : MonoBehaviour
             {
                 if (selected.CompareTag("Node")  && selected.GetComponent<Clickable>().built == false  && moneyGoBrrrrr >= towerAuraPrice)
                 {
+					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerAuraPrice;
                     Vector3 pos = new Vector3(0, 7.5f, 0);
                     Instantiate(towerAura, pos + selected.transform.position, rotation, buildParent.transform);
@@ -135,6 +139,16 @@ public class Build : MonoBehaviour
         List<GameObject> selectedObjects = cc.selectedObjects;
         foreach (GameObject select in selectedObjects.ToList())
         {
+			RaycastHit hit;
+       	 if (Physics.Raycast(select.transform.position, select.transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        	{
+				hit.transform.gameObject.GetComponent<Clickable>().built = false;
+           	 Debug.Log("Untoggle build raycast did hit: " + hit.transform.name);
+       	 }
+			else
+			{
+				Debug.Log("Untoggle build raycast did not hit");
+			}
             if (select.CompareTag("Wall"))
             {
                 selectedObjects.Remove(select);

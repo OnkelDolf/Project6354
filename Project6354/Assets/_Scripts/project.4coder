@@ -2,6 +2,8 @@ version(1);
 
 project_name = "Project6354";
 
+extensions=".c.cpp.h.hpp.cc.cs";
+
 patterns = {
 "*.cs",
 "*.cpp",
@@ -9,7 +11,8 @@ patterns = {
 "*.h",
 "*.bat",
 "*.sh",
-"*.4coder"
+"*.4coder",
+"*.cs",
 };
 
 blacklist_patterns = {

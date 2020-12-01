@@ -14,7 +14,7 @@ public class GameMaster : MonoBehaviour
 
 	private int currentEnemies;
 	private int maxLevel;
-	//private int enemiesLeft;
+	private int aiSpawner;
 
 	[SerializeField] private float enemySpawnPerSecond = 1f;
 	[SerializeField] private float enemySpawnTimer = 0f;
@@ -25,7 +25,8 @@ public class GameMaster : MonoBehaviour
 	[SerializeField] private GameObject defendPointPrefab;
 	private GameObject defendPointUI;
 	private GameObject defendPoint;
-	[SerializeField]private GameObject[] aiSpawnPoints;
+	[SerializeField] private GameObject[] aiSpawnPoints;
+	[SerializeField] private GameObject enemyParent;
 
 	private HealthBuilding defendPointHealth;
 	
@@ -33,30 +34,36 @@ public class GameMaster : MonoBehaviour
 	
 	private Quaternion rotation;
 
+	private System.Random rand;
+
 	void Start()
 	{
 		cc = Camera.main.GetComponent<Click>();
 		defendPointUI = GameObject.FindWithTag("Defend Point UI");
 		defendPointUI.SetActive(false);
 		startWaveButton.SetActive(false);
+		rand = new System.Random();
+		aiSpawner = rand.Next(0, aiSpawnPoints.Length);
 	}
 
     // Update is called once per frame
     void FixedUpdate()
     {
-		//Potential rework(Dolf): Rework it so instead of health being checked every 16ms make it so the damage dealer checks when damage is dealt and then executes loose(); if defendPoint health is 0 or bellow. This would save on performance.
-		if(defendPoint != null && defendPointHealth.health < 0)
-		{
-			loose();
-		}
-		
 		if(startWave == true)
 		{
+			/*
+			System.Random rand = new System.Random();
+			int aiSpawner = rand.Next(0, aiSpawnPoints.Length);
+			*/
+
 			// TODO(Dolf): Start doing shit.
 			enemySpawnTimer += Time.deltaTime;
-			if(enemySpawnTimer >= 1 / enemySpawnPerSecond && currentEnemies != 0)
+			if(enemySpawnTimer >= 1 / enemySpawnPerSecond && currentEnemies != 0 && defendPoint != null)
 			{
-				spawnEnemy();
+				spawnEnemy(aiSpawnPoints[aiSpawner].transform.position);
+
+				currentEnemies--;
+				enemySpawnTimer = 0;
 			}
 		}
 	}
@@ -120,12 +127,13 @@ public class GameMaster : MonoBehaviour
 		startWave = false;
 	}
 
-	private void spawnEnemy()
+	private void spawnEnemy(Vector3 spawnPosition)
 	{
 		//Instantiate(enemyPrefab, );
+		Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, enemyParent.transform);
 	}
 	
-	private void loose()
+	public void loose()
 	{
 		Destroy(defendPoint);
 	}

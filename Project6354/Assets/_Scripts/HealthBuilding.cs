@@ -17,4 +17,9 @@ public class HealthBuilding : MonoBehaviour
     {
         
     }
+	
+	public void Die()
+	{
+		Debug.Log(gameObject.name + " died");
+	}
 }

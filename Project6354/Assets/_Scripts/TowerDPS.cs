@@ -11,9 +11,9 @@ public class TowerDPS : MonoBehaviour
     public int level = 1;
     private int damage = 10;
     
-    private float t = 0;
+    [SerializeField] private float t = 0;
     private float fireRate = 3;
-    private List<GameObject> targets = new List<GameObject>();
+    [SerializeField] private List<GameObject> targets = new List<GameObject>();
     private bool targetsInRange = false;
     private void FixedUpdate()
     {
@@ -63,6 +63,10 @@ public class TowerDPS : MonoBehaviour
             Debug.Log("Object '" + other.name + "' entered trigger");
             targetsInRange = true;
         }
+		else
+		{
+			Debug.Log(other.name);
+		}
     }
 
     private void OnTriggerExit(Collider other)
