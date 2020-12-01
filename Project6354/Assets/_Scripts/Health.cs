@@ -12,20 +12,6 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
         {
-            if (shooter.CompareTag("Tower DPS"))
-            {
-                shooter.GetComponent<TowerDPS>().removeFromList(this.gameObject);
-            }
-            if (shooter.CompareTag("Tower Aura"))
-            {
-                Debug.Log("Removed object from list");
-                shooter.GetComponent<TowerAura>().removeFromList(this.gameObject);
-            }
-            if (shooter.CompareTag("Tower AoE"))
-            {
-                shooter.GetComponent<TowerAura>().removeFromList(this.gameObject);
-            }
-            
             Die();
         }
     }

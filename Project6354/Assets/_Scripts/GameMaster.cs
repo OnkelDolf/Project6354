@@ -43,7 +43,6 @@ public class GameMaster : MonoBehaviour
 		defendPointUI.SetActive(false);
 		startWaveButton.SetActive(false);
 		rand = new System.Random();
-		aiSpawner = rand.Next(0, aiSpawnPoints.Length);
 	}
 
     // Update is called once per frame
@@ -119,6 +118,9 @@ public class GameMaster : MonoBehaviour
 		startWaveButton.SetActive(false);
 		currentEnemies = startingEnemies * wave * level;
 		startWave = true;
+
+		aiSpawner = rand.Next(0, aiSpawnPoints.Length);
+		Debug.Log(aiSpawner);
 	}
 
 	private void endCurrentWave()

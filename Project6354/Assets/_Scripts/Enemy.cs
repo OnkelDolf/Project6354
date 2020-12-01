@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
 
 	private float t = 0;
 
-	private GameObject defendPoint; 
-	// private GameObject gameMaster; // TODO(Dolf): Implement level and wave scaling.
+	public GameObject defendPoint; 
+	private GameObject gameMaster; // TODO(Dolf): Implement level and wave scaling.
 	
 	private NavMeshAgent agent;
 
@@ -48,8 +48,39 @@ public class Enemy : MonoBehaviour
 		{
 			if(Vector3.Distance(transform.position, defendPoint.transform.position) <= attackRange)
 			{
-				AttackDefendPoint();
+				if(defendPoint.GetComponent<HealthBuilding>().health <= damage)
+				{
+					dead = true;
+					GameObject.FindWithTag("Game Master").GetComponent<GameMaster>().loose();
+					Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to less than or equal to 0");
+					Destroy(gameObject);
+				}
+				else
+				{
+					defendPoint.GetComponent<HealthBuilding>().health -= damage;
+					Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to " + defendPoint.GetComponent<HealthBuilding>().health);
+					dead = true;
+					Destroy(gameObject);
+				}
 			}
+		}
+	}
+
+	private void AttackDefendPoint()
+	{
+		if(defendPoint.GetComponent<HealthBuilding>().health <= damage)
+		{
+			dead = true;
+			GameObject.FindWithTag("Game Master").GetComponent<GameMaster>().loose();
+			Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to less than or equal to 0");
+			Destroy(gameObject);
+		}
+		else
+		{
+			defendPoint.GetComponent<HealthBuilding>().health -= damage;
+			Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to " + defendPoint.GetComponent<HealthBuilding>().health);
+			dead = true;
+			Destroy(gameObject);
 		}
 	}
 
@@ -101,22 +132,4 @@ public class Enemy : MonoBehaviour
 		timeDestination += Time.deltaTime;
 	}
 	/////////////////////////////////////////////////////////////////////////
-
-	private void AttackDefendPoint()
-	{
-		if(defendPoint.GetComponent<HealthBuilding>().health <= damage)
-		{
-			dead = true;
-			GameObject.FindWithTag("Game Master").GetComponent<GameMaster>().loose();
-			Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to less than or equal to 0");
-			Destroy(gameObject);
-		}
-		else
-		{
-			defendPoint.GetComponent<HealthBuilding>().health -= damage;
-			Debug.Log(gameObject.name + " attacked defendPoint and reduced it's hp to " + defendPoint.GetComponent<HealthBuilding>().health);
-			dead = true;
-			Destroy(gameObject);
-		}
-	}
 }

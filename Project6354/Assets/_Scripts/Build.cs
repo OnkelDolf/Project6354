@@ -75,7 +75,7 @@ public class Build : MonoBehaviour
                 {
 					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerDPSPrice;
-                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Vector3 pos = new Vector3(0, 6.5f, 0);
                     Instantiate(towerDPS, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
@@ -98,7 +98,7 @@ public class Build : MonoBehaviour
                 {
 					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerAoEPrice;
-                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Vector3 pos = new Vector3(0, 6.5f, 0);
                     Instantiate(towerAoE, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
@@ -121,7 +121,7 @@ public class Build : MonoBehaviour
                 {
 					selected.GetComponent<Clickable>().built = true;
                     moneyGoBrrrrr -= towerAuraPrice;
-                    Vector3 pos = new Vector3(0, 7.5f, 0);
+                    Vector3 pos = new Vector3(0, 6.5f, 0);
                     Instantiate(towerAura, pos + selected.transform.position, rotation, buildParent.transform);
                 }
                 else
