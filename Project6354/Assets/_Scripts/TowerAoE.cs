@@ -79,6 +79,14 @@ public class TowerAoE : MonoBehaviour
         targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
     }
 
+	public void noTargetCheck()
+	{
+		if(targets.Count == 0)
+		{
+			targetsInRange = false;
+		}
+	}
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))

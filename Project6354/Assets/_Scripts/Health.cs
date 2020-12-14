@@ -13,6 +13,19 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Die();
+			
+			if (CompareTag("Tower DPS"))
+        	{
+				GetComponent<TowerDPS>().noTargetCheck();
+        	}
+        	else if (CompareTag("Tower AoE"))
+        	{
+				GetComponent<TowerDPS>().noTargetCheck();
+        	}
+        	else if (CompareTag("Tower Aura"))
+        	{
+				GetComponent<TowerDPS>().noTargetCheck();
+        	}
         }
     }
 

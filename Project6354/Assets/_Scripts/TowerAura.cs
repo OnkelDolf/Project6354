@@ -31,6 +31,14 @@ public class TowerAura : MonoBehaviour
         targets.Remove(obj);
     }
 
+	public void noTargetCheck()
+	{
+		if(targets.Count == 0)
+		{
+			targetsInRange = false;
+		}
+	}
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))

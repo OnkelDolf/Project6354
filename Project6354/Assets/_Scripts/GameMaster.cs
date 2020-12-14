@@ -45,6 +45,7 @@ public class GameMaster : MonoBehaviour
 		rand = new System.Random();
 	}
 
+	private bool test = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -64,6 +65,12 @@ public class GameMaster : MonoBehaviour
 				currentEnemies--;
 				enemySpawnTimer = 0;
 			}
+			
+			test = true;
+		}
+		if(enemyParent.transform.childCount == 0 && currentEnemies == 0 && test)
+		{
+			endCurrentWave();
 		}
 	}
 

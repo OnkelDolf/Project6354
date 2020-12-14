@@ -14,7 +14,8 @@ public class TowerDPS : MonoBehaviour
     [SerializeField] private float t = 0;
     private float fireRate = 3;
     [SerializeField] private List<GameObject> targets = new List<GameObject>();
-    [SerializeField] private bool targetsInRange = false;
+    public bool targetsInRange = false;
+
     private void FixedUpdate()
     {
         if (t > fireRate && targetsInRange && targets.Count > 0)
@@ -46,10 +47,22 @@ public class TowerDPS : MonoBehaviour
 		}
     }
 
+	public void noTargetCheck()
+	{
+		if(targets.Count == 0)
+		{
+			targetsInRange = false;
+		}
+	}
+
     public void removeFromList(GameObject obj)
     {
         targets.Remove(obj);
         targets = targets.OrderBy(x => Vector2.Distance(this.transform.position,x.transform.position)).ToList();
+		if(targets.Count == 0)
+		{
+			targetsInRange = false;
+		}
     }
 
     private void OnTriggerEnter(Collider other)
