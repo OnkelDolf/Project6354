@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Build : MonoBehaviour
 {
-    [SerializeField] private int moneyGoBrrrrr = 1000;
+    public int moneyGoBrrrrr = 1000;
     
     [SerializeField] private int wallPrice = 100;
     [SerializeField] private int towerDPSPrice = 200;
@@ -191,11 +191,22 @@ public class Build : MonoBehaviour
             }
             else if (select.CompareTag("Tower Aura"))
             {
-                
+                if (moneyGoBrrrrr >= towerAuraUpgradeCost)
+                {
+                    select.GetComponent<TowerAura>().level += 1;
+                    moneyGoBrrrrr -= towerAuraUpgradeCost;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
+				
             }
             else if (select.CompareTag("Tower AoE"))
             {
-                
+                if (moneyGoBrrrrr >= towerAoEUpgradeCost)
+                {
+                    select.GetComponent<TowerAoE>().level += 1;
+                    moneyGoBrrrrr -= towerAoEUpgradeCost;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
             }
         }
     }
@@ -217,12 +228,27 @@ public class Build : MonoBehaviour
             }
             else if (select.CompareTag("Tower Aura"))
             {
-                
+                if (select.GetComponent<TowerAura>().level > 1)
+                {
+                    select.GetComponent<TowerAura>().level -= 1;
+                    moneyGoBrrrrr += towerAuraUpgradeCost / 2;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
             }
             else if (select.CompareTag("Tower AoE"))
             {
-                
+                if (select.GetComponent<TowerAoE>().level > 1)
+                {
+                    select.GetComponent<TowerAoE>().level -= 1;
+                    moneyGoBrrrrr += towerAoEUpgradeCost / 2;
+                    moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+                }
             }
         }
     }
+
+	public void UpdateMoneyCounter() 
+	{
+		moneyCounter.GetComponent<UnityEngine.UI.Text>().text = "Money: " + moneyGoBrrrrr.ToString();
+	}
 }

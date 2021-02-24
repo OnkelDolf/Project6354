@@ -6,7 +6,16 @@ public class Health : MonoBehaviour
 {
     public int health = 10;
 
-    public void Damage(int damage, GameObject shooter)
+    private GameObject mainCamera;
+	
+	
+	void Start()
+	{
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+	}
+
+
+	public void Damage(int damage, GameObject shooter)
     {
         health -= damage;
 
@@ -33,9 +42,11 @@ public class Health : MonoBehaviour
     {
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
-        /*
+        
         if (CompareTag("Enemy"))
         {
+			mainCamera.GetComponent<Build>().moneyGoBrrrrr += 20;
+			mainCamera.GetComponent<Build>().UpdateMoneyCounter();
             // TODO: Spawn blood splatter effect.
         }
         else if (CompareTag("Wall"))
@@ -46,7 +57,7 @@ public class Health : MonoBehaviour
         {
             // TODO: End Game
         }
-        */
+        
         Debug.Log("'" + name + "'" + "Died");
         Destroy(gameObject);
     }
